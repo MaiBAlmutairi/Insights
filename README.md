@@ -1,4 +1,4 @@
-#here some step to run
+
 # frontend_template
 
 How to srun this project
