@@ -10,9 +10,10 @@ on:
 jobs:
   Dev:
      runs-on: ubuntu-latest
+     environment: Dev
      steps:
       - uses: actions/checkout@v2
-        env: Dev
+        
   sonarcloud:
     name: SonarCloud
     runs-on: ubuntu-latest
@@ -31,14 +32,18 @@ jobs:
           group: QA
           cancel-in-progress: true
         runs-on: ubuntu-latest
+        environment: QA
+        needs: Dev
         steps:
           - uses: actions/checkout@v2
             with:
               fetch-depth: 0 
-        env: QA
+            
   prod:
      runs-on: ubuntu-latest
+     environment: prod
+     needs: QA
      steps:
       - uses: actions/checkout@v2
-      env: prod       
+             
      
