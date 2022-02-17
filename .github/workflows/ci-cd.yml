@@ -32,7 +32,9 @@ jobs:
           group: QA
           cancel-in-progress: true
         runs-on: ubuntu-latest
-        environment: QA
+        environment:
+             name: QA
+             url: https://github.com
         needs: Dev
         steps:
           - uses: actions/checkout@v2
