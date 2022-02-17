@@ -35,7 +35,7 @@ jobs:
           - uses: actions/checkout@v2
             with:
               fetch-depth: 0 
-        env:: QA
+        env: QA
   prod:
      runs-on: ubuntu-latest
      steps:
