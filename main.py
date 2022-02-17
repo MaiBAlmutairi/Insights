@@ -449,11 +449,11 @@ def home():
         total_paid_query=f"SELECT CONVERT(int,ROUND(sum(PaidAmount),0)) FROM dbo.Merchants WHERE UpdatedDate>='{fdate}' AND UpdatedDate<='{ldate}' AND TerminalIDs='{tid}'"
         misc_charges=f"SELECT CONVERT(int,ROUND(sum(Adjustment_Amount),0)) FROM dbo.PaymentTransfers WHERE TransferDate>='{fdate}' AND TransferDate<='{ldate}'"
    
-    #cursor.execute(span_query)
+   
     SPANresult=execute(span_query)
-    #cursor.execute(visa_query)
+    cursor.execute(visa_query)
     VISAresult=execute(visa_query)
-    #cursor.execute(master_query)
+    cursor.execute(master_query)
     MASTERresult=execute(master_query)
     #cursor.execute(total_due_query)
     total_due=execute(total_due_query)
