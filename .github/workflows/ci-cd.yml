@@ -39,12 +39,25 @@ jobs:
         steps:
           - uses: actions/checkout@v2
             with:
-              fetch-depth: 0 
-            
+              fetch-depth: 0        
+  QA-Pass:
+        name:  QA-Pass
+        concurrency: 
+          group:  QA-Pass
+          cancel-in-progress: true
+        runs-on: ubuntu-latest
+        environment:
+             name: QA-Pass
+        needs: QA
+        steps:
+          - uses: actions/checkout@v2
+            with:
+              fetch-depth: 0            
+          
   prod:
      runs-on: ubuntu-latest
      environment: prod
-     needs: QA
+     needs:   QA-Pass
      steps:
       - uses: actions/checkout@v2
              
