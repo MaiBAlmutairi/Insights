@@ -31,7 +31,7 @@ jobs:
         concurrency: 
           group: QA
           cancel-in-progress: true
-        runs-on: ubuntu-latest
+        runs-on: self-hosted
         environment:
              name: QA
              url: http://localhost/
