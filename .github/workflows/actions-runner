@@ -1,0 +1,9 @@
+# Create a folder under the drive root
+$ mkdir actions-runner; cd actions-runner# Download the latest runner package
+$ Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.287.1/actions-runner-win-x64-2.287.1.zip -OutFile actions-runner-win-x64-2.287.1.zip# Optional: Validate the hash
+$ if((Get-FileHash -Path actions-runner-win-x64-2.287.1.zip -Algorithm SHA256).Hash.ToUpper() -ne '91f8ab7837b2968328fa04fa14ec8f18767b0dfa12b2b293e77cf36ee6d33673'.ToUpper()){ throw 'Computed checksum did not match' }# Extract the installer
+$ Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$PWD/actions-runner-win-x64-2.287.1.zip", "$PWD")
+Configure
+# Create the runner and start the configuration experience
+$ ./config.cmd --url https://github.com/MaiBAlmutairi/Insights --token AWB2UVMTHA6BB5OGZ4U4GDTCCKGE4# Run it!
+$ ./run.cmd
