@@ -51,10 +51,11 @@ jobs:
                                                       
                         # dotnet build and publish
                          - name: Build with dotnet
-                           run: |
-                              Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process -Force 
+                           run: 
                               dotnet build --configuration Release .\dotnet-core-webapp
 
+                              #Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process -Force 
+                              
                          - name: dotnet publish 
                            run: |
                             dotnet publish -c Release -o dotnetcorewebapp .\dotnet-core-webapp
