@@ -39,7 +39,37 @@ jobs:
         steps:
           - uses: actions/checkout@v2
             with:
-              fetch-depth: 0        
+              fetch-depth: 0  
+  build-and-deploy-back-end:
+                       runs-on: self-hosted
+                       steps:
+                         - uses: actions/checkout@v2
+                         - name: Setup .NET Core
+                           uses: actions/setup-dotnet@v1
+                           with:
+                            dotnet-version: 3.0.100
+                                                      
+                        # dotnet build and publish
+                         - name: Build with dotnet
+                           run: dotnet build --configuration Release .\dotnet-core-webapp
+
+                         - name: dotnet publish 
+                           run: |
+                            dotnet publish -c Release -o dotnetcorewebapp .\dotnet-core-webapp
+                         - name: Deploy to IIS
+                           run: |
+                             iisreset /stop
+                             Copy-Item ./dotnetcorewebapp/* C:/inetpub/wwwroot/dotnetcore-webapp -Recurse -Force
+                             iisreset /start
+    
+                         - name: Curl the website as a smoke test
+                           run: curl http://localhost/dotnetcore-webapp
+
+                         - name: Run Web Test
+                           run: |
+                             dotnet build --configuration Release .\dotnet-core-webapp.webtest
+                              cd .\dotnet-core-webapp.webtests
+                             dotnet test             
   QA-Pass:
         name:  QA-Pass
         concurrency: 
