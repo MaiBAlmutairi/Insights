@@ -51,8 +51,9 @@ jobs:
                  #  run: npm run build
                  - name: Build2
                    run: |
+                             cd C:\Users\user\OneDrive\Desktop\MerchantApp\pay_merchant_app 
                              ionic build --configuration=staging
-                             Copy-Item ./www/* C:/inetpub/wwwroot -Recurse -Force          
+                             Copy-Item .\www\* C:\inetpub\wwwroot -Recurse -Force          
                      
                  - name: Run Tests
                    run: npm run test            
