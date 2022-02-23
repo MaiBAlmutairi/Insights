@@ -51,7 +51,9 @@ jobs:
                                                       
                         # dotnet build and publish
                          - name: Build with dotnet
-                           run: dotnet build --configuration Release .\dotnet-core-webapp
+                           run: |
+                              Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process -Force 
+                              dotnet build --configuration Release .\dotnet-core-webapp
 
                          - name: dotnet publish 
                            run: |
