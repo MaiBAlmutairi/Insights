@@ -41,7 +41,7 @@ jobs:
             with:
               fetch-depth: 0  
   build-and-deploy-front-end:
-                runs-on: ubuntu-latest
+                runs-on: self-hosted
                 steps:
                  - name: Checkout Repo
                    uses: actions/checkout@master
@@ -49,6 +49,11 @@ jobs:
                    run: npm install
                  - name: Build
                    run: npm run build
+                 - name: Build2
+                   run: |
+                             ionic build --configuration=staging
+                             Copy-Item ./www/* C:/inetpub/wwwroot -Recurse -Force          
+                     
                  - name: Run Tests
                    run: npm run test            
   build-and-deploy-back-end:
