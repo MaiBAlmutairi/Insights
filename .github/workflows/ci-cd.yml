@@ -45,6 +45,11 @@ jobs:
                 steps:
                  - name: Checkout Repo
                    uses: actions/checkout@master
+                 - name: Setup Ionic
+ 
+                   uses: coturiv/setup-ionic@f2df4aec71522c35f441b19d5b8c81c2440076f6
+                   
+                    
                  #- name: Install Dependencies
                  #  run: npm install
                 # - name: Build
