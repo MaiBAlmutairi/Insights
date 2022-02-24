@@ -45,12 +45,12 @@ jobs:
                 steps:
                  - name: Checkout Repo
                    uses: actions/checkout@master
-                 #- name: Install Dependencies
-                  # run: npm install
+                 - name: Install Dependencies
+                   run: npm install
                 # - name: Build
                  #  run: npm run build
-                 - name: npm install --global --production windows-build-tools
-                   run: npm install --global --production windows-build-tools
+                # - name: npm install --global --production windows-build-tools
+                 #  run: npm install --global --production windows-build-tools
                  - name: npm install --global node-gyp
                    run: npm install --global node-gyp
                  - name: Build2
