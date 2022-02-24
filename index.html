@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Foodics Pay Merchant App</title>
+
+  <base href="/" />
+
+  <meta name="color-scheme" content="light" />
+  <meta name="viewport"
+    content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+
+
+
+  <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
+
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+  <script type="text/javascript">
+    /**
+     * String.prototype.replaceAll() polyfill
+     * https://gomakethings.com/how-to-replace-a-section-of-a-string-with-another-one-with-vanilla-js/
+     * @author Chris Ferdinandi
+     * @license MIT
+     */
+    if (!String.prototype.replaceAll) {
+      String.prototype.replaceAll = function (str, newStr) {
+
+        // If a regex pattern
+        if (Object.prototype.toString.call(str).toLowerCase() === '[object regexp]') {
+          return this.replace(str, newStr);
+        }
+
+        // If a string
+        return this.replace(new RegExp(str, 'g'), newStr);
+
+      };
+    }
+  </script>
+
+  <script type="text/javascript">
+    var lang = 'en';
+    var storedLang = localStorage.getItem("lang");
+    if (storedLang === 'ar') {
+      lang = 'ar';
+    }
+
+    var el = document.getElementsByTagName('html');
+    el[0].setAttribute('lang', lang);
+    el[0].setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  </script>
+
+</head>
+
+<body>
+  <app-root></app-root>
+</body>
+
+</html>
