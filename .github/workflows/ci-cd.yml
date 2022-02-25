@@ -41,7 +41,7 @@ jobs:
             with:
               fetch-depth: 0  
   build-and-deploy-front-end:
-                runs-on: self-hosted
+                runs-on: ubuntu-latest
                 steps:
                 - name: Checkout Repo
                   uses: actions/checkout@master
