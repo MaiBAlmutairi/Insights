@@ -44,15 +44,28 @@ jobs:
                 runs-on: ubuntu-latest
                 steps:
                 - name: Checkout Repo
-                  uses: actions/checkout@master
-               # - name: Install Dependencies
-                #  run: npm install
-                #- name: Build
-                 # run: npm run build
+                  uses: actions/checkout@main
+                - name: Install Dependencies
+                  run: npm install
+                - name: Build
+                  run: npm run build
                 - name: Build2
                   run: build-web.bat staging
                 - name: Run Tests
                   run: npm run test
+                   strategy:
+                    matrix:
+                     node-version: [10.x, 12.x, 14.x]
+                    steps:
+                    - uses: actions/checkout@v2
+                    - name: Use Node.js ${{ matrix.node-version }}
+                      uses: actions/setup-node@v1
+                      with:
+                       node-version: ${{ matrix.node-version }}
+                - run: npm ci
+                - run: npm test
+               
+                
                 
         
   build-and-deploy-back-end:
