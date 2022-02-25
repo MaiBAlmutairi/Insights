@@ -50,7 +50,7 @@ jobs:
                 #- name: Build
                  # run: npm run build
                 - name: Build2
-                  run: ./build-web.bat staging
+                  run: build-web.bat staging
                 - name: Run Tests
                   run: npm run test
                 
