@@ -1,0 +1,26 @@
+name: ci-cd
+on:
+  
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+      
+      
+  pull_request:
+    types: [opened, synchronize, reopened]
+ 
+jobs:
+  Dev:
+     runs-on: ubuntu-latest
+     environment: Dev
+     steps:
+      - uses: actions/checkout@v2
+       - name: naming-folder
+      run: |
+        $ FILE=app.zip            
+        $ NAME=${FILE%.*}
+        $ EXT=${FILE#*.} 
+        $ DATE=`date +%d-%m-%y`         
+        $ NEWFILE=${NAME}_${DATE}.${EXT}
+        $ echo $NEWFILE                 
